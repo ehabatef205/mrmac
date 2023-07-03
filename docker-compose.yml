@@ -9,7 +9,7 @@ services:
     volumes:
       - ./back_mrmac/src:/back_mrmac_App/src:ro
     ports:
-      - "7000:7000"
+      - "9000:9000"
   react:
     build:
       context: ./front_mrmac
