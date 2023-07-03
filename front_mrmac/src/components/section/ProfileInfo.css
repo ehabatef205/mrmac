@@ -1,0 +1,262 @@
+.cont{
+    width: 85%;
+    margin: auto;
+}
+.HEAD {
+    margin-top: 10%;
+    direction: rtl;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    background-color: rgb(251, 251, 251);
+    border-bottom: 1px solid rgb(230, 230, 230);
+}
+.headtext {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    font-weight: 500;
+}
+
+.LoyaltyCard {
+    background: #fff;
+    color: #000;
+    min-height: 100px;
+    width: 100%;
+    padding: 20px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+.Rewards {
+    max-width: 400px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 16px;
+    margin: auto;
+}
+.Rewards__title {
+    font-weight: 700;
+    font-size: 1.8em;
+}
+.Rewards__level {
+    font-size: 1em;
+    margin: 10px 0;
+}
+.holder {
+    padding: 0px 20px 20px;
+    margin-top: 5%;
+    margin-bottom: 10px;
+}
+.holder > * {
+    border-bottom: 1px solid lightgray;
+    padding: 20px 0px;
+}
+.infogridholder {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex: 1 1 0%;
+}
+
+.reset {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+
+}
+
+.resetbutton {
+    outline: none;
+    border: none;
+    background: transparent;
+    padding: 10px 0px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-radius: 6px;
+    color: rgb(80, 192, 169);
+}
+.Settings .phone_number-title {
+    font-size: 1em;
+    margin-top: 0;
+}
+.numberline {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    gap: 20px;
+}
+.feildsize {
+    position: relative;
+    flex: 1 1 0%;
+}
+.numinput{
+    direction: ltr;
+    display: block;
+    position: relative;
+}
+.flag-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding: 1px;
+}
+.updatebutton {
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    border-radius: 6px;
+    border: 1px solid rgb(80, 192, 169);
+    background-color: rgb(80, 192, 169);
+    color: white;
+}
+.FormMessage {
+    opacity: 0;
+    height: 1px;
+    transition: .3s;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.infofeild {
+    direction: rtl;
+    position: relative;
+    flex: 1 1 0%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.infofeild .input-label {
+    font-size: 12px;
+    color: rgb(102, 103, 103);
+    align-self: flex-start;
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    z-index: 10;
+    background-color: white;
+    padding-bottom: 10px;
+}
+
+.infogrid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto auto ;
+    margin-bottom: 20px;
+}
+
+
+.profinput {
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    margin: 5px 0;
+    position: relative;
+    padding: 10px;
+    display: block;
+    width: 100%;
+    height: 44px;
+    direction: rtl;
+    -webkit-border-radius: 0;
+    min-height: 13px;
+    font-size: 13px;
+    border-radius: 6px;
+}
+
+.AccountCard {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.AccountCard__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+.AccountCard__title button {
+    justify-content: flex-start;
+}
+.AccountCard__title img {
+    height: 20px;
+    min-width: 15px;
+}
+.Button {
+    background-color: #000;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+    padding: 10px;
+}
+.MySizeCard__item {
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-gap: 5px;
+}
+.Button--account {
+    background-color: transparent;
+}
+.settingsButtonBar {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+.Button--greenTransparent {
+    background-color: #fff;
+    color: #51c0a9;
+    border: 1px solid #51c0a9;
+}
+.Button--greenFilled {
+    background-color: #51c0a9;
+}
+select {
+    background-color: #fff;
+    border: 1px solid #e7e7e7;
+    margin: 5px 0;
+    position: relative;
+    padding: 10px 30px 10px 10px;
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    height: 44px;
+    min-height: 13px;
+    font-size: 13px;
+    background-image: url(https://a.namshicdn.com/my/assets/20b23e99cc6221abd4ab.svg);
+    background-position: center right 10px;
+    background-size: 10px;
+    background-repeat: no-repeat;
+    background-position: center left 10px;
+    padding: 10px 10px 10px 30px;
+}

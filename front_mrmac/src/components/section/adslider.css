@@ -1,0 +1,27 @@
+.slick-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background-color: rgb(255, 0, 0);
+    font-size: 0;
+    display: flex;
+}
+
+.slick-arrow:hover{
+    background-color: aliceblue;
+}
+.slick-arrow:focus{
+    background-color: rgb(255, 204, 127);
+}
+.slick-prev {
+    left: -30px;
+}
+
+.slick-next {
+    right: -2px;
+}
+.slick-track{
+    display: flex;
+    justify-content: space-between;
+}

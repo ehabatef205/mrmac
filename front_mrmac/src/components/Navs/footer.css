@@ -1,0 +1,41 @@
+.Footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15%;
+    padding: 50px 0;
+    background-color: transparent;
+    color: #eee;
+    border-top: solid 1px #eee;
+    margin: 30px 0;
+    text-align: center;
+}
+
+
+.Footer__content div {
+    margin: 15%;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s
+}
+
+.Footer__content div:hover {
+    color: #dd4949;
+    transition: .3s
+}
+
+
+.site-footer__social-icons {
+    display: flex;
+    gap: 15%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center
+}
+
+
+.site-footer__social-icons-member{
+    width: 30%;
+    cursor: pointer;
+}

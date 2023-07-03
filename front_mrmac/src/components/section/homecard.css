@@ -1,0 +1,13 @@
+.icon_pulse {
+    animation: circle 1.2s steps(8) infinite;
+}
+
+@keyframes circle {
+    from {
+        transform: rotate(90deg);
+    }
+
+    to {
+        transform: rotate(450deg);
+    }
+}
