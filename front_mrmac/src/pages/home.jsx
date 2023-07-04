@@ -2,6 +2,7 @@ import {React, useState, useEffect} from "react";
 import Homeslider from "../components/section/homeslider";
 import { Container } from "react-bootstrap";
 import Homecards from "../components/section/homecards";
+import {Buttons, Categories} from "../components/section/homecards";
 import "../components/section/slider.css";
 import { Nav2 } from "../components/Navs/Nav2";
 import getAll from '../api/basis/allcategory'
@@ -21,6 +22,13 @@ export default function Home() {
       }
   ,[])
 
+  const images = [
+    "/banar2.jpg",
+    "/banar1.jpg",
+    "/banar3.jpg",
+    "/banar1.jpg",
+  ]
+
   return (
     <>
     <Nav2></Nav2>
@@ -38,9 +46,35 @@ export default function Home() {
       <Container className="my-4  " style={{ justifyContent: "center" }}>
         <div>
           <div className="" style={{ height: "fit-content" }}>
+            <Buttons></Buttons>
+          </div>
+        </div>
+      </Container>
+
+      <Container className="my-4  " style={{ justifyContent: "center" }}>
+        <div>
+          <div className="" style={{ height: "fit-content" }}>
+            <Categories></Categories>
+          </div>
+        </div>
+      </Container>
+
+      <Container className="my-4  " style={{ justifyContent: "center" }}>
+        <div>
+          <div className="" style={{ height: "fit-content" }}>
             {loading? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> 
   : <>{categories.map((card, indexOfCategory) => (
-              <Homecards key={card._id} id={card._id} name={card.name} index={indexOfCategory} ></Homecards>
+              <div key={card._id}>
+              <div>
+              <img
+                className="d-block w-100 "
+                src={images[indexOfCategory]}
+                alt="Third slide"
+                style={{ height: "200px" }}
+              />
+              </div>
+              <Homecards id={card._id} name={card.name} index={indexOfCategory}></Homecards>
+              </div>
             ))}</>}
           </div>
         </div>

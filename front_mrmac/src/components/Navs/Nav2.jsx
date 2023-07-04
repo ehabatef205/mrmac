@@ -29,7 +29,7 @@ const icons = [
         <Nav className="me-auto text-dark w-100 justify-content-end">
           {categories.map((card, indexOfCategory) => (
             <Nav.Link className="text-dark " key={indexOfCategory} onClick={() => {{navigate("/view_products/category/"+card?._id, {state: {id: card?._id, name: card?.name, icon: icons[indexOfCategory]}})}}}>
-              {card?.name}
+              <b>{card?.name}</b>
             </Nav.Link>
           ))}
          

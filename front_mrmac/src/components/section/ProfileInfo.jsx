@@ -45,7 +45,7 @@ const LogOut=async()=>{
 }
 
 return( 
-    <div className="cont" style={{top: "50px", position: "relative", height: "calc(100vh - 50px)"}}>
+    <div className="cont" style={{top: "50px", position: "relative"}}>
     {loading? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> : <>
         <div className="Settings">
       <div className="holder">
@@ -134,9 +134,6 @@ return(
       </div>
     </div></>}
     <div className="settingsButtonBar">
-      <button className="Button Button--greenTransparent ">
-        <strong>حذف حسابي</strong>
-      </button>
       <button className="Button Button--greenFilled "onClick={()=>{LogOut()}}>
         <strong>الخروج</strong>
       </button>

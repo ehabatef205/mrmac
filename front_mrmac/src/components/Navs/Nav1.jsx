@@ -32,23 +32,9 @@ export function NavBar({ setCurrentPage, setShow }) {
 
   },[query])
 
-  const handleLinkClick = (href) => {
-    setSelectedLink(href);
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    setCurrentPage(href);
-  };
-
-  const linkStyle = {
-    padding: "0.5rem 2.1rem",
-    borderRight: "1px solid Black",
-  };
-
   return (
     <div>
-      <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "#fff"}}>
+      <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "rgb(225, 111, 0)"}}>
         <Container fluid className="px-0">
           <Nav.Link style={{paddingLeft: "10px"}} onClick={() => {
             if(localStorage.getItem("Authorization") === null){
@@ -57,7 +43,7 @@ export function NavBar({ setCurrentPage, setShow }) {
               navigate("/profile");
             }
           }}>
-              <AccountCircleOutlinedIcon style={{color: "#000"}}/>
+              <AccountCircleOutlinedIcon style={{color: "#fff", fontSize: "30px"}}/>
           </Nav.Link>
           <Nav.Link style={{paddingLeft: "20px"}} onClick={() => {
               if(localStorage.getItem("Authorization") === null){
@@ -68,18 +54,24 @@ export function NavBar({ setCurrentPage, setShow }) {
                 navigate("/cart");
               }
           }}>
-              <ShoppingBagOutlinedIcon style={{color: "#000"}}/>
+              <ShoppingBagOutlinedIcon style={{color: "#fff", fontSize: "30px"}}/>
           </Nav.Link>
           <Nav className="me-auto" style={{display: "flex", alignItems: "center", justifyContent: "center", width: "80vw"}}>
             <div style={container}>
-              <Nav.Link style={{ color: "black"}}>
-                <SearchOutlinedIcon style={{color: "#fff"}}/>
+              <Nav.Link style={{ color: "#fff"}}>
+                <SearchOutlinedIcon style={{color: "#000"}}/>
               </Nav.Link>
               <input
-                style={{ color: "#fff", border: "none", outline: "none", textAlign: "right", background: "#000", borderRadius: "25px", width: "100%"}}
+                style={{ color: "#000", border: "none", outline: "none", textAlign: "right", background: "#fff", borderRadius: "25px", width: "100%"}}
                 value={query}
                 onChange={(e)=>{setQuery(e.target.value)}}
               />
+            </div>
+            {/* <Nav.Link href={"#cart"} style={{marginLeft:'3%'}} onClick={() => setShow(false)}><ShoppingBagOutlinedIcon /></Nav.Link>  */}
+          </Nav>
+          <Nav className="me-auto" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
+            <div style={{fontSize: "calc(2vmin)", fontWeight: "bold", marginLeft: "5px", marginRight: "5px", color: "#fff"}}>
+              +96892139757
             </div>
             {/* <Nav.Link href={"#cart"} style={{marginLeft:'3%'}} onClick={() => setShow(false)}><ShoppingBagOutlinedIcon /></Nav.Link>  */}
           </Nav>
@@ -113,7 +105,7 @@ export function NavBar({ setCurrentPage, setShow }) {
 }
 const container = {
   display: "flex",
-  backgroundColor: "black",
+  backgroundColor: "#fff",
   paddingRight: "1%",
   borderRadius: 50,
   width: "40vw",

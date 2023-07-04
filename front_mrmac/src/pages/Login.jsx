@@ -48,7 +48,7 @@ export default function Login() {
         style={login}
         >
             <div className="" style={{flexDirection: "column", height: "fit-content", width: "80vw", justifyContent: "center", alignItems: "center", display:"flex"}}>
-            <img src="/logo.png" alt="logo" height={"100px"} width={"100px"} style={{marginRight: "25px"}}/>
+            <img src="/logo.png" alt="logo" height={"100px"} width={"100px"}/>
             <h4>تسجيل دخول</h4>
             <input
             ref={emailRef}
@@ -70,7 +70,7 @@ export default function Login() {
                 </button>}
                 <div className="haveAccount" style={{marginTop: "20px"}}>
                     <>ليس لديك حساب؟ </>
-                    <span className="buttonSign" style={{color: "#0d6efd", cursor: "pointer"}} onClick={signup}>
+                    <span className="buttonSign" style={{color: "rgb(225, 111, 0", cursor: "pointer"}} onClick={signup}>
                     سجل
                     </span>
                 </div>
@@ -102,7 +102,7 @@ const inputText = {
 const loginButton = {
     marginTop: "20px",
     border: "none",
-    backgroundColor: "#0d6efd",
+    backgroundColor: "rgb(225, 111, 0)",
     width: "40%",
     color: "#fff",
     padding: "10px",
@@ -112,7 +112,7 @@ const loginButton = {
 const loginButton2 = {
     marginTop: "20px",
     border: "none",
-    backgroundColor: "#5898f8",
+    backgroundColor: "rgb(225, 111, 0)",
     width: "40%",
     color: "#fff",
     padding: "10px",

@@ -105,7 +105,7 @@ export default function Signup() {
             </button>}
             <div className="haveAccount" style={{marginTop: "20px"}}>
                 <>هل لديك حساب بالفعل؟ </>
-                <span className="buttonSign" style={{color: "#0d6efd", cursor: "pointer"}} onClick={login}>
+                <span className="buttonSign" style={{color: "rgb(225, 111, 0", cursor: "pointer"}} onClick={login}>
                 تسجيل دخول
                 </span>
             </div>
@@ -123,7 +123,6 @@ const signup = {
     alignItems: "center",
     flexDirection: "column",
     display: "flex",
-    height: "calc(100vh - 60px)"
 };
 
 const inputText = {
@@ -145,7 +144,7 @@ const inputText2 = {
 const signupButton = {
     marginTop: "20px",
     border: "none",
-    backgroundColor: "#0d6efd",
+    backgroundColor: "rgb(225, 111, 0)",
     width: "40%",
     color: "#fff",
     padding: "10px",
@@ -155,7 +154,7 @@ const signupButton = {
 const signupButton2 = {
     marginTop: "20px",
     border: "none",
-    backgroundColor: "#5898f8",
+    backgroundColor: "rgb(225, 111, 0)",
     width: "40%",
     color: "#fff",
     padding: "10px",
