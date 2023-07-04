@@ -292,7 +292,7 @@ export function Buttons() {
           <div className="d-flex justify-content-around flex-wrap">
             {photos.map((image, index) => <div
                 className="card m-2"
-          style={{ width: "288px"}}
+          style={{ width: "288px", background: "none", border: "none"}}
                 key={index}
               >
                 <img
