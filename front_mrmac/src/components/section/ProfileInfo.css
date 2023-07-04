@@ -235,11 +235,11 @@ a {
 }
 .Button--greenTransparent {
     background-color: #fff;
-    color: #51c0a9;
-    border: 1px solid #51c0a9;
+    color: rgb(225, 111, 0);
+    border: 1px solid rgb(225, 111, 0);;
 }
 .Button--greenFilled {
-    background-color: #51c0a9;
+    background-color: rgb(225, 111, 0);;
 }
 select {
     background-color: #fff;
