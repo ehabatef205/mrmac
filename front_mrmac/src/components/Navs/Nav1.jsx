@@ -34,7 +34,7 @@ export function NavBar({ setCurrentPage, setShow }) {
 
   return (
     <div>
-      <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "rgb(80, 192, 169)"}}>
+      <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "rgb(225, 111, 0)"}}>
         <Container fluid className="px-0">
           <Nav.Link style={{paddingLeft: "10px"}} onClick={() => {
             if(localStorage.getItem("Authorization") === null){

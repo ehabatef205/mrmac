@@ -101,7 +101,7 @@ export default function Homecards(props) {
                   <div>
                     <button
                       className="btn text-light my-3 mx-3  "
-                      style={{ backgroundColor: "rgb(80, 192, 169)" }}
+                      style={{ backgroundColor: "rgb(225, 111, 0)" }}
                       onClick={() => {add(product._id)}}
                       disabled={localStorage.getItem("Authorization") === null}
                       >
@@ -203,7 +203,7 @@ export function ViewProductCard() {
                   <div>
                     <button
                       className="btn text-light my-3 mx-3  "
-                      style={{ backgroundColor: "rgb(80, 192, 169)" }}
+                      style={{ backgroundColor: "rgb(225, 111, 0)" }}
                       onClick={() => {}}
                       disabled={localStorage.getItem("Authorization") === null}
                       >
