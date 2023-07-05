@@ -35,9 +35,17 @@ export default function Homecards(props) {
 
   const icons = [
     "bi bi-phone",
-    "bi bi-headphones",
-    "bi bi-laptop",
+    "bi bi-smartwatch",
+    "bi bi-briefcase",
     "bi bi-earbuds",
+    "bi bi-keyboard",
+    "bi bi-rocket",
+    "bi bi-shield-shaded",
+    "bi bi-speaker",
+    "bi bi-alarm",
+    "bi bi-battery-charging",
+    "bi bi-camera",
+    "bi bi-wallet",
   ];
 
   const add = (product_id) => {
@@ -93,7 +101,7 @@ export default function Homecards(props) {
                   <div>
                     <button
                       className="btn text-light my-3 mx-3  "
-                      style={{ backgroundColor: "rgb(225, 111, 0)" }}
+                      style={{ backgroundColor: "rgb(80, 192, 169)" }}
                       onClick={() => {add(product._id)}}
                       disabled={localStorage.getItem("Authorization") === null}
                       >
@@ -136,10 +144,18 @@ export function ViewProductCard() {
   , [data])
 
   const images = [
-    "/banar2.jpg",
-    "/banar1.jpg",
-    "/banar3.jpg",
-    "/banar1.jpg",
+    "/bannar1.jpg",
+    "/bannar2.jpg",
+    "/bannar3.jpg",
+    "/bannar4.jpg",
+    "/bannar5.jpg",
+    "/bannar6.jpg",
+    "/bannar1.jpg",
+    "/bannar4.jpg",
+    "/bannar3.jpg",
+    "/bannar6.jpg",
+    "/bannar5.jpg",
+    "/bannar12.jpg",
   ]
 
   const navigate = useNavigate();
@@ -161,8 +177,8 @@ export function ViewProductCard() {
           <div className="" style={{ height: "70px", textAlign: "right", flexDirection: "row", display: "flex", justifyContent: "flex-end"}}>
             <div
               style={{ display: "inline-flex", alignItems: "center"}}>
-              <p style={{ paddingLeft: "13px", paddingRight: "13px"}}>{data.name}</p>
-              <i className={data.icon}></i>
+              <b style={{ paddingLeft: "13px", paddingRight: "13px", fontSize: "25px"}}>{data.name}</b>
+              <i className={data.icon} style={{fontSize: "35px"}}></i>
             </div>
           </div>
           <div className="d-flex justify-content-around flex-wrap">
@@ -187,7 +203,7 @@ export function ViewProductCard() {
                   <div>
                     <button
                       className="btn text-light my-3 mx-3  "
-                      style={{ backgroundColor: "rgb(225, 111, 0)" }}
+                      style={{ backgroundColor: "rgb(80, 192, 169)" }}
                       onClick={() => {}}
                       disabled={localStorage.getItem("Authorization") === null}
                       >
@@ -295,11 +311,17 @@ export function Buttons() {
           style={{ width: "288px", background: "none", border: "none"}}
                 key={index}
               >
-                <img
+                {(index ===3)? <a href="https://t.me/hydrahekal" target="_blank">
+                  <img
                     className="card-img-top"
                     src={image}
                     alt="Card image cap"
                   />
+                </a>: <img
+                    className="card-img-top"
+                    src={image}
+                    alt="Card image cap"
+                  />}
               </div>)}
           </div>
           <ToastContainer />
@@ -322,17 +344,33 @@ export function Categories() {
 ,[])
 
   const photos = [
-    "phone.png",
-    "speakers.png", 
+    "smartphones.png",
+    "smartwatches.png", 
+    "bags.png",
+    "headphones.png",
+    "computeraccessories.png",
     "caraccessories.png",
-    "headphone.png",
+    "protection.png",
+    "speakers.png",
+    "inventions.png",
+    "chargers.png",
+    "photography.png",
+    "wallets.png",
   ]
 
   const icons = [
     "bi bi-phone",
-    "bi bi-headphones",
-    "bi bi-laptop",
+    "bi bi-smartwatch",
+    "bi bi-briefcase",
     "bi bi-earbuds",
+    "bi bi-keyboard",
+    "bi bi-rocket",
+    "bi bi-shield-shaded",
+    "bi bi-speaker",
+    "bi bi-alarm",
+    "bi bi-battery-charging",
+    "bi bi-camera",
+    "bi bi-wallet",
   ];
 
   return (
@@ -343,9 +381,9 @@ export function Categories() {
           <div className="d-flex justify-content-around flex-wrap">
             {categories.map((category, index) => <div
                 className="card m-2"
-          style={{ width: "150px", justifyContent: "center", alignItems: "center", border: "none", backgroundColor: "transparent", cursor: "pointer"}}
+          style={{ width: "175px", justifyContent: "center", alignItems: "center", border: "none", backgroundColor: "transparent", cursor: "pointer"}}
                 key={index}
-                onClick={() => {navigate("/view_products/category/"+category._id, {state: {id: category._id, name: category.name, icon: icons[icons.index], indexOfphoto: index}})}}
+                onClick={() => {navigate("/view_products/category/"+category._id, {state: {id: category._id, name: category.name, icon: icons[index], indexOfphoto: index}})}}
               >
                 <img
                     className="card-img-top"

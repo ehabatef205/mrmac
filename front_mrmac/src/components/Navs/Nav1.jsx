@@ -34,7 +34,7 @@ export function NavBar({ setCurrentPage, setShow }) {
 
   return (
     <div>
-      <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "rgb(225, 111, 0)"}}>
+      <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "rgb(80, 192, 169)"}}>
         <Container fluid className="px-0">
           <Nav.Link style={{paddingLeft: "10px"}} onClick={() => {
             if(localStorage.getItem("Authorization") === null){
@@ -43,7 +43,7 @@ export function NavBar({ setCurrentPage, setShow }) {
               navigate("/profile");
             }
           }}>
-              <AccountCircleOutlinedIcon style={{color: "#fff", fontSize: "30px"}}/>
+              <AccountCircleOutlinedIcon style={{color: "#fff", fontSize: "25px"}}/>
           </Nav.Link>
           <Nav.Link style={{paddingLeft: "20px"}} onClick={() => {
               if(localStorage.getItem("Authorization") === null){
@@ -54,9 +54,12 @@ export function NavBar({ setCurrentPage, setShow }) {
                 navigate("/cart");
               }
           }}>
-              <ShoppingBagOutlinedIcon style={{color: "#fff", fontSize: "30px"}}/>
+              <ShoppingBagOutlinedIcon style={{color: "#fff", fontSize: "25px"}}/>
           </Nav.Link>
-          <Nav className="me-auto" style={{display: "flex", alignItems: "center", justifyContent: "center", width: "80vw"}}>
+          <Nav.Link style={{paddingLeft: "20px"}}>
+              <FavoriteBorderOutlinedIcon style={{color: "#fff", fontSize: "25px"}}/>
+          </Nav.Link>
+          <Nav className="me-auto" style={{display: "flex", alignItems: "center", justifyContent: "center", width: "50vw"}}>
             <div style={container}>
               <Nav.Link style={{ color: "#fff"}}>
                 <SearchOutlinedIcon style={{color: "#000"}}/>
@@ -71,7 +74,7 @@ export function NavBar({ setCurrentPage, setShow }) {
           </Nav>
           <Nav className="me-auto" style={{display: "flex", alignItems: "center", justifyContent: "center"}}>
             <div style={{fontSize: "calc(2vmin)", fontWeight: "bold", marginLeft: "5px", marginRight: "5px", color: "#fff"}}>
-              +96892139757
+              +96560610918
             </div>
             {/* <Nav.Link href={"#cart"} style={{marginLeft:'3%'}} onClick={() => setShow(false)}><ShoppingBagOutlinedIcon /></Nav.Link>  */}
           </Nav>
@@ -108,11 +111,10 @@ const container = {
   backgroundColor: "#fff",
   paddingRight: "1%",
   borderRadius: 50,
-  width: "40vw",
+  width: "30vw",
 };
 
 const imageNav = {
-  width: "25vw",
   display: "flex",
   justifyContent: "flex-end",
 };

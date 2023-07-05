@@ -23,10 +23,18 @@ export default function Home() {
   ,[])
 
   const images = [
-    "/banar2.jpg",
-    "/banar1.jpg",
-    "/banar3.jpg",
-    "/banar1.jpg",
+    "/bannar1.jpg",
+    "/bannar2.jpg",
+    "/bannar3.jpg",
+    "/bannar4.jpg",
+    "/bannar5.jpg",
+    "/bannar6.jpg",
+    "/bannar1.jpg",
+    "/bannar4.jpg",
+    "/bannar3.jpg",
+    "/bannar6.jpg",
+    "/bannar5.jpg",
+    "/bannar12.jpg",
   ]
 
   return (
@@ -78,6 +86,14 @@ export default function Home() {
             ))}</>}
           </div>
         </div>
+        <div>
+          <img
+            className="d-block w-100 "
+            src="/brands.jpg"
+            alt="brands"
+            style={{ height: "200px" }}
+          />
+       </div>
       </Container>
     </div>
     </>

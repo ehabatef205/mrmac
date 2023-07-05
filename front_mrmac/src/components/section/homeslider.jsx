@@ -5,12 +5,15 @@ import { useState, useEffect } from "react";
 import getImages from '../../api/basis/getImages'
 import { FaSpinner } from 'react-icons/fa';
 import "./homecard.css"
+import { useNavigate } from "react-router-dom";
 
 export default function Homeslider() {
 
   const title = "image";
   const [images,setImages]=useState([])
   const [loading,setLoading]=useState(false)
+  const [ind,setInd]=useState(0)
+  const navigate = useNavigate()
 
   useEffect(()=>{
     setLoading(true)
@@ -20,6 +23,16 @@ export default function Homeslider() {
       })
       }
   ,[title])
+
+  const handleSlideClick = (index) => {
+    console.log(`Slide ${index} clicked!`);
+    navigate("/view_products/category/"+images[index].category_id, {state: {id: images[index].category_id, name: images[index].name, icon: "", indexOfphoto: index}})
+  };
+
+  const handleSelect = (index) => {
+    setInd(index)
+    console.log(`${index}`);
+  };
 
   return (
     <div
@@ -31,7 +44,7 @@ export default function Homeslider() {
         className="carousel-inner"
         style={{ height: "300px", backgroundColor: "transparent" }}
       >
-        <Carousel controls={false}>
+        <Carousel onClick={() => handleSlideClick(ind)} onSelect={handleSelect}>
               {images.map((image, index) => (
                 <Carousel.Item key={index}>
                   <img
