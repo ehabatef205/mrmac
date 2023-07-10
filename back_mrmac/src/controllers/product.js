@@ -22,6 +22,7 @@ module.exports.CreateProduct = async (req, res, next) => {
             name: body.name,
             desc: body.desc,
             image: body.image,
+            images: body.images,
             SKU:body.SKU,
             category_id: body.category_id,
             price:body.price,

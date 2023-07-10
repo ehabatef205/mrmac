@@ -1,9 +1,15 @@
 import axios from "../axios";
 
-const   addOrder=async(token, product_id)=>{
+const   addOrder=async(token, products, phone, country, firstName, lastName, address, city, zipCode)=>{
     return  axios.post('/order_items/create', {
-        product_id: product_id,
-        quantity: 1
+        products: products,
+        phone: phone,
+        country: country,
+        firstName: firstName,
+        lastName: lastName,
+        address: address,
+        city: city,
+        zipCode: zipCode
     }
     ,{headers:{authorization:token}}
     )

@@ -79,7 +79,7 @@ export default function Homecards(props) {
               <i className={icons[props.index]} style={{fontSize: "35px"}}></i>
             </div>
           </div>
-          <div className="d-flex justify-content-around flex-wrap">
+          <div className="d-flex justify-content-center flex-wrap">
             {loading? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> 
    : <>
             {prod_by_cat?.map((product, index) => (index < 8)? <div
@@ -98,24 +98,13 @@ export default function Homecards(props) {
                   className="card-body my-2 d-flex   justify-content-between"
                   style={{ fontSize: "15px", padding: "5px" }}
                 >
-                  <div>
-                    <button
-                      className="btn text-light my-3 mx-3  "
-                      style={{ backgroundColor: "rgb(225, 111, 0)" }}
-                      onClick={() => {add(product._id)}}
-                      disabled={localStorage.getItem("Authorization") === null}
-                      >
-                      <i className="bi bi-plus-lg" color="#fff"></i>
-                    </button>
-                  </div>
                   <div className="d-flex flex-column align-items-end " onClick={() => {navigate(`/category/${props.id}/view_product/${product?._id}`, {state: product});}}>
-                    <Card.Title className="mb-0" style={{whiteSpace: "nowrap",
+                    <Card.Title className="mb-0" style={{height: "50px",
     overflow: "hidden",
     overflowWrap: "break-word",
     textOverflow: "ellipsis",
-    width: "190px", textAlign: "end"}}>{product.name}</Card.Title>
-                    <Card.Text className="mb-0">KWD السعر: {product.price}</Card.Text>
-                    <Card.Text>الكمية: {product.quantity}</Card.Text>
+    width: "270px", textAlign: "end"}}>{product.name}</Card.Title>
+                    <Card.Text className="mb-0">KWD {product.price}</Card.Text>
                   </div>
                 </div>
               </div> : <div key={product?._id}></div>)}

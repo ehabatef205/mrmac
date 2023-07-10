@@ -70,7 +70,7 @@ export default function Login() {
                 </button>}
                 <div className="haveAccount" style={{marginTop: "20px"}}>
                     <>ليس لديك حساب؟ </>
-                    <span className="buttonSign" style={{color: "rgb(225, 111, 0", cursor: "pointer"}} onClick={signup}>
+                    <span className="buttonSign" style={{color: "rgb(225, 111, 0)", cursor: "pointer"}} onClick={signup}>
                     سجل
                     </span>
                 </div>

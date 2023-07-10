@@ -9,9 +9,9 @@ module.exports.Create_order_item = async (req, res) => {
     const decoded = jwt.verify(token[1], process.env.JWT_KEY);
     const id = decoded.id;
 
-    const order_item = req.body
+    const body = req.body
 
-    await add_order_item(order_item, id).then(e => {
+    await add_order_item(body, id).then(e => {
         return res.status(200).json(e)
     }).catch(err => {
         console.log('err',err)
@@ -19,11 +19,17 @@ module.exports.Create_order_item = async (req, res) => {
     })
 }
 
-const add_order_item = async ({product_id, quantity}, id) => {
+const add_order_item = async (body, id) => {
     const newOrder_item = new Order_items({
         user_id: id,
-        product_id,
-        quantity
+        products: body.products,
+        phone: body.phone,
+        country: body.country,
+        firstName: body.firstName,
+        lastName: body.lastName,
+        address: body.address,
+        city: body.city,
+        zipCode: body.zipCode
     })
     await newOrder_item.save()
     return newOrder_item

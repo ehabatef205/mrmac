@@ -12,8 +12,22 @@ function SelectedProductPage({ products, handleClick }) {
   const location = useLocation();
   const data = location.state;
 
+  const [quantity,setQuantity]=useState(1)
+
+  const addQuantity = () => {
+    if(quantity < data.quantity){
+      setQuantity(quantity + 1)
+    }
+  }
+
+  const minusQuantity = () => {
+    if(quantity !== 1){
+      setQuantity(quantity - 1)
+    }
+  }
+
   const add = (product_id) => {
-    addCart(localStorage.getItem("Authorization"), product_id).then(res => {
+    addCart(localStorage.getItem("Authorization"), product_id, quantity).then(res => {
       if(res.data.message === "This product is already in cart"){
         toast.error(res.data.message, {
           position: toast.POSITION.TOP_RIGHT
@@ -49,7 +63,7 @@ function SelectedProductPage({ products, handleClick }) {
             className=" w-100 d-flex "
             style={{ fontSize: "25px", justifyContent: "flex-end"}}
           >
-            <b className="mx-2" style={{color: "rgb(225, 111, 0"}}>KWD {data.price}</b>
+            <b className="mx-2" style={{color: "rgb(225, 111, 0)"}}>KWD {data.price}</b>
           </div>
           <div
             className=" w-100 my-1 d-flex "
@@ -63,10 +77,14 @@ function SelectedProductPage({ products, handleClick }) {
             </div>
           </div>
           <div className=" my-1 w-100  d-md-grid ">
-            <span className=" my-2 h-75" style={{ textAlign: "center", display: "flex", justifyContent: "center"}}>
-              <button
+            <span className=" my-2 h-75" style={{ textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center"}}>
+              <div style={{backgroundColor: "rgb(225, 111, 0)", borderRadius: "5px"}}><i className="bi bi-dash" style={{fontSize: "20px", padding: "10px", color: "#fff"}} onClick={() => {minusQuantity()}}></i></div>
+            <b style={{padding: "10px"}}>{quantity}</b>
+            <div style={{backgroundColor: "rgb(225, 111, 0)", borderRadius: "5px"}}><i className="bi bi-plus" style={{fontSize: "20px", padding: "10px", color: "#fff"}} onClick={() => {addQuantity()}}></i>
+            </div>
+            <button
                 className="btn text-light my-3 h-50 w-75"
-                style={{ backgroundColor: "rgb(225, 111, 0)" }}
+                style={{ backgroundColor: "rgb(225, 111, 0)", marginLeft: "10px" }}
                 onClick={() => {add(data._id)}}
                 disabled={localStorage.getItem("Authorization") === null}
               >
@@ -77,6 +95,16 @@ function SelectedProductPage({ products, handleClick }) {
         </div>
       </Container>
       <ToastContainer />
+      <Container>
+          {data.images.map((image, index) => (
+            <img key = {index}
+            className="d-block w-100 "
+            src={image}
+            alt="Third slide"
+            style={{ paddingTop: "10px"}}
+          />
+        ))}
+        </Container>
     </div>
   );
 }
