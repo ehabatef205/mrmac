@@ -11,7 +11,7 @@ module.exports.Create_cart_item = async (req, res) => {
 
     const cart_item = req.body
 
-    const isNewCart = await Cart_items.isThisCart(cart_item.product_id)
+    const isNewCart = await Cart_items.isThisCart(cart_item.product_id, id)
     if(!isNewCart){
         return res.json({
             message: 'This product is already in cart'
