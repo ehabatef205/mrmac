@@ -8,7 +8,7 @@ import "./homecard.css"
 
 const ProfileInfo = () => {
   const [thisuser, setThisUser] = useState();
-  const [token, setToken] = useState(localStorage.getItem("Authorization"));
+  const [token, setToken] = useState(localStorage.getItem("MRMACAuthorization"));
   const [loading, setLoading] = useState(false)
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
@@ -26,7 +26,7 @@ const ProfileInfo = () => {
 
   useEffect(() => {
     setLoading(true)
-  getuser(token).then(res=>{
+  getuser().then(res=>{
     setLoading(false)
     console.log(res.data)
     setThisUser(res.data.respone)
@@ -35,12 +35,12 @@ const ProfileInfo = () => {
 },[])
 
 const handleClick=()=>{
-  updateuser(first_name, last_name , telephone  ,token).then(res=>{
+  updateuser(first_name, last_name , telephone).then(res=>{
     window.location.reload(false);
   })
 }
 const LogOut=async()=>{
-  await localStorage.removeItem('Authorization')
+  await localStorage.removeItem('MRMACAuthorization')
     navigate('/')
 }
 

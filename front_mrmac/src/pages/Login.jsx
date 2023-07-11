@@ -20,13 +20,13 @@ export default function Login() {
 
     const logIn = async () => {
         setLoading(true);
-        localStorage.removeItem("Authorization")
+        localStorage.removeItem("MRMACAuthorization")
         await axios.post('/user/login',{email: emailRef.current.value, password: passwordRef.current.value}).then( async(res)=>{
           const message = res.data.message;
           
           if(message === 'Login Successful!'){
             setLoading(false);
-            localStorage.setItem("Authorization", "Bearer " + res.data.token);
+            localStorage.setItem("MRMACAuthorization", "Bearer " + res.data.token);
             navigate('/', {replace: true});
           }else if(message === "email or password is invalid"){
             toast.warning(message, {

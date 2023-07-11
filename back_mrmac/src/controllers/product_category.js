@@ -15,11 +15,14 @@ module.exports.AllProduct_categorys = (req, res) => {
         })
     })
 }
+
 module.exports.CreateProduct_category = async (req, res, next) => {
     let body = req.body
 
     let product_category = new Product_category({
         name: body.name,
+        image: body.image,
+        imageBanner: body.imageBanner,
         desc: body.desc,
     })
     product_category.save()
@@ -44,6 +47,7 @@ module.exports.UpdateProduct_category = async (req, res) => {
         return res.json({message: "Error"})
     })
 }
+
 module.exports.DeleteProduct_category = async (req, res) => {
     let _id =new mongoose.Types.ObjectId(req.params.id)
     await Product_category.deleteOne({_id:_id}).then(e => {
@@ -52,8 +56,10 @@ module.exports.DeleteProduct_category = async (req, res) => {
         return res.json({message: "Error"})
     })
 }
+
 module.exports.getCategory = async (req, res) => {
     let _id = new mongoose.Types.ObjectId(req.params.id)
+    
     await Product_category.findOne({_id:_id}).then(e => {
         res.header('Access-Control-Allow-Origin', '*');
         return res.json(e)

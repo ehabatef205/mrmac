@@ -8,6 +8,7 @@ import { FaSpinner } from 'react-icons/fa';
 import addCart from "../../api/basis/addCart"
 import removeCart from "../../api/basis/removeCart"
 import getProduct from '../../api/basis/product'
+import getCategoryByID from '../../api/basis/getCategoryById'
 import "./homecard.css"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -33,23 +34,8 @@ export default function Homecards(props) {
 
   const navigate = useNavigate();
 
-  const icons = [
-    "bi bi-phone",
-    "bi bi-smartwatch",
-    "bi bi-briefcase",
-    "bi bi-earbuds",
-    "bi bi-keyboard",
-    "bi bi-rocket",
-    "bi bi-shield-shaded",
-    "bi bi-speaker",
-    "bi bi-alarm",
-    "bi bi-battery-charging",
-    "bi bi-camera",
-    "bi bi-wallet",
-  ];
-
   const add = (product_id) => {
-    addCart(localStorage.getItem("Authorization"), product_id).then(res => {
+    addCart(localStorage.getItem("MRMACAuthorization"), product_id).then(res => {
       if(res.data.message === "This product is already in cart"){
         toast.error(res.data.message, {
           position: toast.POSITION.TOP_RIGHT
@@ -65,18 +51,17 @@ export default function Homecards(props) {
           className="my-4"
           style={{ justifyContent: "center", backgroundColor: "white" }}
         >
-          <div className="" style={{ height: "70px", textAlign: "right", flexDirection: "row", display: "flex", justifyContent: "flex-end"}}>
+          <div className="" style={{textAlign: "right", flexDirection: "row", display: "flex", justifyContent: "flex-end"}}>
             <div
               className=" col-9"
-              style={{ display: "flex", display: "inline-flex", justifyContent: "flex-end", alignItems: "end"}}
+              style={{ display: "flex", display: "inline-flex", justifyContent: "flex-end", alignItems: "center"}}
               >
-              <p style={{cursor: "pointer", fontSize: "15px"}} onClick={() => {navigate("/view_products/category/"+props.id, {state: {id: props.id, name: props.name, icon: icons[props.index], indexOfphoto: props.index}})}}
-            >عرض الكل </p>
+              <div style={{cursor: "pointer", fontSize: "15px"}} onClick={() => {navigate("/view_products/category/"+props.id, {state: {id: props.id}})}}
+            >عرض الكل </div>
             </div>
             <div
               style={{ display: "inline-flex", alignItems: "center"}}>
               <b style={{ paddingLeft: "13px", paddingRight: "13px", fontSize: "25px"}}>{props.name}</b>
-              <i className={icons[props.index]} style={{fontSize: "35px"}}></i>
             </div>
           </div>
           <div className="d-flex justify-content-center flex-wrap">
@@ -120,58 +105,55 @@ export function ViewProductCard() {
   const data = location.state;
 
   const [prod_by_cat,setProdByCat]=useState([])
+  const [categ,setCateg]=useState(null)
 
-  const [loading,setLoading]=useState(false)
+  const [loading,setLoading]=useState(true)
+  const [loading2,setLoading2]=useState(true)
   
   useEffect(()=>{
     setLoading(true)
-    getFaction(data.id).then(res=>{
+    getCategoryByID(data.id).then(res=>{
       setLoading(false)
-      setProdByCat(res.data)
+      setCateg(res.data)
+      console.log(res.data)
     })
   }
   , [data])
 
-  const images = [
-    "/bannar1.jpg",
-    "/bannar2.jpg",
-    "/bannar3.jpg",
-    "/bannar4.jpg",
-    "/bannar5.jpg",
-    "/bannar6.jpg",
-    "/bannar1.jpg",
-    "/bannar4.jpg",
-    "/bannar3.jpg",
-    "/bannar6.jpg",
-    "/bannar5.jpg",
-    "/bannar12.jpg",
-  ]
+  useEffect(()=>{
+    setLoading2(true)
+    getFaction(data.id).then(res=>{
+      setLoading2(false)
+      setProdByCat(res.data)
+    })
+  }
+  , [data])
 
   const navigate = useNavigate();
 
   return (
     <div>
       <div>
-      <img
+      {loading? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> : <img
         className="d-block w-100 "
-        src={images[data.indexOfphoto]}
+        src={categ.imageBanner}
         alt="Third slide"
         style={{ height: "200px" }}
-      />
+      />}
       </div>
       <Container
           className="my-4"
           style={{ justifyContent: "center", backgroundColor: "white" }}
         >
-          <div className="" style={{ height: "70px", textAlign: "right", flexDirection: "row", display: "flex", justifyContent: "flex-end"}}>
+          {loading? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> : <div className="" style={{ height: "70px", textAlign: "right", flexDirection: "row", display: "flex", justifyContent: "flex-end"}}>
             <div
               style={{ display: "inline-flex", alignItems: "center"}}>
-              <b style={{ paddingLeft: "13px", paddingRight: "13px", fontSize: "25px"}}>{data.name}</b>
+              <b style={{ paddingLeft: "13px", paddingRight: "13px", fontSize: "25px"}}>{categ.name}</b>
               <i className={data.icon} style={{fontSize: "35px"}}></i>
             </div>
-          </div>
+          </div>}
           <div className="d-flex justify-content-around flex-wrap">
-            {loading? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> 
+            {loading2? <FaSpinner icon="spinner" className="icon_pulse" style={{fontSize: "50px"}}/> 
    : <>
             {prod_by_cat?.map((product, index) => <div
                 className="card m-2"
@@ -189,24 +171,13 @@ export function ViewProductCard() {
                   className="card-body my-2 d-flex   justify-content-between"
                   style={{ fontSize: "15px", padding: "5px" }}
                 >
-                  <div>
-                    <button
-                      className="btn text-light my-3 mx-3  "
-                      style={{ backgroundColor: "rgb(225, 111, 0)" }}
-                      onClick={() => {}}
-                      disabled={localStorage.getItem("Authorization") === null}
-                      >
-                      <i className="bi bi-plus-lg" color="#fff"></i>
-                    </button>
-                  </div>
                   <div className="d-flex flex-column align-items-end " onClick={() => {navigate(`/category/${data.id}/view_product/${product?._id}`, {state: product});}}>
-                    <Card.Title className="mb-0" style={{whiteSpace: "nowrap",
+                    <Card.Title className="mb-0" style={{height: "50px",
     overflow: "hidden",
     overflowWrap: "break-word",
     textOverflow: "ellipsis",
-    width: "190px", textAlign: "end"}}>{product.name}</Card.Title>
-                    <Card.Text className="mb-0">KWD السعر: {product.price}</Card.Text>
-                    <Card.Text>الكمية: {product.quantity}</Card.Text>
+    width: "270px", textAlign: "end"}}>{product.name}</Card.Title>
+                    <Card.Text className="mb-0">KWD {product.price}</Card.Text>
                   </div>
                 </div>
               </div>)}
@@ -260,7 +231,7 @@ export function ViewCart(props) {
                       className="btn text-light my-3 mx-3  "
                       style={{ backgroundColor: "red" }}
                       onClick={() => {remove(props.cart_id)}}
-                      disabled={localStorage.getItem("Authorization") === null}
+                      disabled={localStorage.getItem("MRMACAuthorization") === null}
                       >
                       <i className="bi bi-trash3" color="#fff"></i>
                     </button>
@@ -332,36 +303,6 @@ export function Categories() {
     }
 ,[])
 
-  const photos = [
-    "smartphones.png",
-    "smartwatches.png", 
-    "bags.png",
-    "headphones.png",
-    "computeraccessories.png",
-    "caraccessories.png",
-    "protection.png",
-    "speakers.png",
-    "inventions.png",
-    "chargers.png",
-    "photography.png",
-    "wallets.png",
-  ]
-
-  const icons = [
-    "bi bi-phone",
-    "bi bi-smartwatch",
-    "bi bi-briefcase",
-    "bi bi-earbuds",
-    "bi bi-keyboard",
-    "bi bi-rocket",
-    "bi bi-shield-shaded",
-    "bi bi-speaker",
-    "bi bi-alarm",
-    "bi bi-battery-charging",
-    "bi bi-camera",
-    "bi bi-wallet",
-  ];
-
   return (
     <Container
           className="my-4"
@@ -372,11 +313,11 @@ export function Categories() {
                 className="card m-2"
           style={{ width: "175px", justifyContent: "center", alignItems: "center", border: "none", backgroundColor: "transparent", cursor: "pointer"}}
                 key={index}
-                onClick={() => {navigate("/view_products/category/"+category._id, {state: {id: category._id, name: category.name, icon: icons[index], indexOfphoto: index}})}}
+                onClick={() => {navigate("/view_products/category/"+category._id, {state: {id: category._id}})}}
               >
                 <img
                     className="card-img-top"
-                    src={photos[index]}
+                    src={category.image}
                     alt="Card image cap"
                   />
                   <b>{category.name}</b>

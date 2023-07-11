@@ -1,8 +1,8 @@
 import axios from "../axios";
 
-const getCarts=async(token)=>{
+const getCarts=async()=>{
     return  axios.get('/cart_items/'
-    ,{headers:{authorization:token}}
+    ,{headers:{authorization:localStorage.getItem("MRMACAuthorization")}}
     )
 }
 export default getCarts

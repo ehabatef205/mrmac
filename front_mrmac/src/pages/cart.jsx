@@ -26,14 +26,11 @@ export default function CartPage() {
   const zipCode = useRef(null);
 
   useEffect(()=>{
-      if(localStorage.getItem("Authorization") !== null){
+      if(localStorage.getItem("MRMACAuthorization") !== null){
         setLoading(true)
-      getCarts(localStorage.getItem("Authorization")).then(res=>{
+      getCarts(localStorage.getItem("MRMACAuthorization")).then(res=>{
         setLoading(false)
         setCarts(res.data)
-        for(var i = 0; i < res.data.length; i++){
-          setProducts([...products, {product_id: res.data[i].product_id, quantity: res.data[i].quantity}]) 
-        }
       }).catch((error) => {
         setLoading(false)
       })
@@ -41,23 +38,20 @@ export default function CartPage() {
     }
     ,[])
 
-    useEffect(()=>{
+    const addProducts = () => {
       for(var i = 0; i < carts.length; i++){
-        setProducts({"product_id": carts[i].product_id, "quantity": carts[i].quantity}) 
-       }
+        const product = {product_id:carts[i].product_id, quantity: carts[i].quantity}
+        setProducts(products => [...products, product]) 
+      }
     }
-    ,[])
 
     const add = async() => {
       if(viewInputs === false){
+        addProducts()
         setView(true)
       }else{
-        await addOrder(localStorage.getItem("Authorization"), products, phone.current.value, country.current.value, firstName.current.value, lastName.current.value, address.current.value, city.current.value, zipCode.current.value).then(async res => {
-          for(var i = 0; i < carts.length; i++){
-            await removeCart(carts[i]._id).then(res => {
-              console.log("Done")
-            })
-          }
+        await addOrder(products, phone.current.value, country.current.value, firstName.current.value, lastName.current.value, address.current.value, city.current.value, zipCode.current.value).then(async res => {
+          console.log(res.data)
         })
         window.location.reload(false)
       }
@@ -135,8 +129,8 @@ export default function CartPage() {
                     <button
                       className="btn text-light my-3 h-50 w-100"
                       onClick={() => {add()}}
-                      style={{ backgroundColor: "rgb(255, 111, 0)" }}
-                      disabled={localStorage.getItem("Authorization") === null}
+                      style={{ backgroundColor: "blue" }}
+                      disabled={localStorage.getItem("MRMACAuthorization") === null}
                     >
                       طلب اوردر
                     </button>

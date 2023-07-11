@@ -37,7 +37,7 @@ export function NavBar({ setCurrentPage, setShow }) {
       <Navbar variant="light" fixed={"top"} className="custom-navbar" style={{height: "60px", width: "100vw", backgroundColor: "rgb(225, 111, 0)"}}>
         <Container fluid className="px-0">
           <Nav.Link style={{paddingLeft: "10px"}} onClick={() => {
-            if(localStorage.getItem("Authorization") === null){
+            if(localStorage.getItem("MRMACAuthorization") === null){
               navigate("/login");
             }else{
               navigate("/profile");
@@ -46,7 +46,7 @@ export function NavBar({ setCurrentPage, setShow }) {
               <AccountCircleOutlinedIcon style={{color: "#fff", fontSize: "25px"}}/>
           </Nav.Link>
           <Nav.Link style={{paddingLeft: "20px"}} onClick={() => {
-              if(localStorage.getItem("Authorization") === null){
+              if(localStorage.getItem("MRMACAuthorization") === null){
                 toast.warning("Please login first", {
                   position: toast.POSITION.TOP_RIGHT
               })

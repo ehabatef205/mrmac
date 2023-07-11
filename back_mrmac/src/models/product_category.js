@@ -5,6 +5,12 @@ const categorySchema = new Schema({
     name:{
         type:String
     },
+    image:{
+        type: String
+    },
+    imageBanner:{
+        type: String
+    },
     desc: {
         type: String
     },

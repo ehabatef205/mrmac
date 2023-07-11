@@ -26,7 +26,7 @@ export default function Homeslider() {
 
   const handleSlideClick = (index) => {
     console.log(`Slide ${index} clicked!`);
-    navigate("/view_products/category/"+images[index].category_id, {state: {id: images[index].category_id, name: images[index].name, icon: "", indexOfphoto: index}})
+    navigate("/view_products/category/"+images[index].category_id, {state: {id: images[index].category_id}})
   };
 
   const handleSelect = (index) => {

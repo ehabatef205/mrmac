@@ -1,6 +1,6 @@
 import axios from "../axios";
 
-const   addOrder=async(token, products, phone, country, firstName, lastName, address, city, zipCode)=>{
+const addOrder=async(products, phone, country, firstName, lastName, address, city, zipCode)=>{
     return  axios.post('/order_items/create', {
         products: products,
         phone: phone,
@@ -11,7 +11,7 @@ const   addOrder=async(token, products, phone, country, firstName, lastName, add
         city: city,
         zipCode: zipCode
     }
-    ,{headers:{authorization:token}}
+    ,{headers:{authorization:localStorage.getItem("MRMACAuthorization")}}
     )
 }
 export default addOrder

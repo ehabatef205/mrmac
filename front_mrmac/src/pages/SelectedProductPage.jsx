@@ -7,6 +7,7 @@ import "./SelectedProductPage.css"
 import addCart from "../api/basis/addCart"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import getProduct from "../api/basis/product";
 
 function SelectedProductPage({ products, handleClick }) {
   const location = useLocation();
@@ -27,15 +28,33 @@ function SelectedProductPage({ products, handleClick }) {
   }
 
   const add = (product_id) => {
-    addCart(localStorage.getItem("Authorization"), product_id, quantity).then(res => {
-      if(res.data.message === "This product is already in cart"){
-        toast.error(res.data.message, {
-          position: toast.POSITION.TOP_RIGHT
-      })
-      }else{
-        console.log(res.data)
-      }
+    if(localStorage.getItem("MRMACAuthorization") === null){
+      toast.warning("Please login first", {
+        position: toast.POSITION.TOP_RIGHT
     })
+    }else if(data.quantity === 0){
+      toast.warning("Wait for add new", {
+        position: toast.POSITION.TOP_RIGHT
+      })
+    }else{
+      getProduct(product_id).then(res => {
+        if(res.data.quantity === 0){
+          toast.warning("All quantities have been purchased", {
+            position: toast.POSITION.TOP_RIGHT
+          })
+        }else{
+          addCart(product_id, quantity).then(res => {
+            if(res.data.message === "This product is already in cart"){
+              toast.error(res.data.message, {
+                position: toast.POSITION.TOP_RIGHT
+            })
+            }else{
+              console.log(res.data)
+            }
+          })
+        }
+      })
+    }
   }
 
   return (
@@ -79,14 +98,13 @@ function SelectedProductPage({ products, handleClick }) {
           <div className=" my-1 w-100  d-md-grid ">
             <span className=" my-2 h-75" style={{ textAlign: "center", display: "flex", justifyContent: "center", alignItems: "center"}}>
               <div style={{backgroundColor: "rgb(225, 111, 0)", borderRadius: "5px"}}><i className="bi bi-dash" style={{fontSize: "20px", padding: "10px", color: "#fff"}} onClick={() => {minusQuantity()}}></i></div>
-            <b style={{padding: "10px"}}>{quantity}</b>
-            <div style={{backgroundColor: "rgb(225, 111, 0)", borderRadius: "5px"}}><i className="bi bi-plus" style={{fontSize: "20px", padding: "10px", color: "#fff"}} onClick={() => {addQuantity()}}></i>
+            <b style={{padding: "10px"}}>{data.quantity === 0? "0" : quantity}</b>
+            <div style={{backgroundColor: "rgb(225, 111, 0)", borderRadius: "5px"}}><i className="bi bi-plus" style={{fontSize: "20px", padding: "10px", color: "#fff"}}  onClick={() => {addQuantity()}}></i>
             </div>
             <button
                 className="btn text-light my-3 h-50 w-75"
                 style={{ backgroundColor: "rgb(225, 111, 0)", marginLeft: "10px" }}
                 onClick={() => {add(data._id)}}
-                disabled={localStorage.getItem("Authorization") === null}
               >
                 Add To Cart
               </button>

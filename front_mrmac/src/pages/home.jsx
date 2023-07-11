@@ -22,21 +22,6 @@ export default function Home() {
       }
   ,[])
 
-  const images = [
-    "/bannar1.jpg",
-    "/bannar2.jpg",
-    "/bannar3.jpg",
-    "/bannar4.jpg",
-    "/bannar5.jpg",
-    "/bannar6.jpg",
-    "/bannar1.jpg",
-    "/bannar4.jpg",
-    "/bannar3.jpg",
-    "/bannar6.jpg",
-    "/bannar5.jpg",
-    "/bannar12.jpg",
-  ]
-
   return (
     <>
     <Nav2></Nav2>
@@ -76,7 +61,7 @@ export default function Home() {
               <div>
               <img
                 className="d-block w-100 "
-                src={images[indexOfCategory]}
+                src={card.imageBanner}
                 alt="Third slide"
                 style={{ height: "200px" }}
               />
